@@ -1,0 +1,9 @@
+selenium==4.11.2
+selenium-stealth==1.0.6
+webdriver-manager==4.0.0
+undetected-chromedriver==3.5.2 
+scrapy==2.10.0
+seleniumbase==4.17.13
+customtkinter==5.2.0
+pynput==1.7.6
+tk==0.1.0
