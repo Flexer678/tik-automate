@@ -185,10 +185,12 @@ class Tiktokbot(BaseCase):
                 Vidlength = ""
                 while downbutton == "" and Vidlength == "":
                     try:
+                        print("finding bttons")
                         downbutton = self.driver.find_element("xpath", Tiktokbot.scrollVariables[1])
                         Vidlength = self.driver.find_element("xpath", Tiktokbot.scrollVariables[2]).get_attribute("innerText")
                         sleep_duration = str(Vidlength[Vidlength.find("/")+1: len(Vidlength)])
                         get_time = (int(sleep_duration[0:2])*60) + int(sleep_duration[3:len(sleep_duration)])
+                        print("finding bttons done")
                     except:
                         time.sleep(30)
                         print("\n unable to find some elements \n trying again \n \n")
@@ -198,14 +200,9 @@ class Tiktokbot(BaseCase):
                 
                     time.sleep(get_time)
                     print("about", get_time, "seconds till scroll")
-                   
-  
-                   
-                   
-                    
-            
               
                     try:
+                        print("scrolling")
                         downbutton.click()
                         
                             
