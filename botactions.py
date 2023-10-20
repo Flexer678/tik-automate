@@ -77,10 +77,6 @@ class Tiktokbot(BaseCase):
         )
         self.actions = ActionChains(self.driver)
        
-       
-        
-    
-    
     
     def shoutout():
         print("shout out to Zinkq on github")
@@ -88,80 +84,6 @@ class Tiktokbot(BaseCase):
     def getBot(self):
         return self.driver
 
-
-    def login(self):
-        self.islogedIn = True
-        if self.islogedIn:
-            print("WORKING")
-            self.driver.get("https://www.tiktok.com/foryou")
-        else:
-            self.driver.get(Tiktokbot.loginVariables[0])
-            try:
-                WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH,  Tiktokbot.loginVariables[1])))            
-                fieldForm =self.driver.find_element("xpath", Tiktokbot.loginVariables[1])
-            except:
-                self.driver.quit()
-            finally:
-                for i in self.email:
-                    fieldForm.send_keys(i)
-                    time.sleep(float("0."+random.choice(Tiktokbot.timers[0:4]) + random.choice(Tiktokbot.timers[0:7]) + random.choice(Tiktokbot.timers[0:9])))
-
-            
-            fieldForm = self.driver.find_element("xpath",  Tiktokbot.loginVariables[2])
-            for i in self.password:
-                fieldForm.send_keys(i)
-                time.sleep(float("0."+random.choice(Tiktokbot.timers[0:4]) + random.choice(Tiktokbot.timers[0:7]) + random.choice(Tiktokbot.timers[0:9])))
-                
-            try:
-                    WebDriverWait(self.driver, 3).until(EC.presence_of_element_located((By.XPATH,  Tiktokbot.loginVariables[3])))
-            except:
-                    self.driver.quit()
-            finally:
-                    button = self.driver.find_element("xpath",  Tiktokbot.loginVariables[3])
-                    button.clickandhold()
-                    self.islogedIn = True
-
-
-    
-   
-
-    def getComments():
-        with open(Tiktokbot.commentfile,  encoding='utf-8-sig') as file:
-            lines = len(file.readlines())
-
-        book  = random.randrange(2,lines)
-    
-        file1 = open("comments.txt","r+")
-        file =open("comments.txt")
-        content = file.readlines()
-
-    
-        return (content[book])
-    
-    def clickInteraction(self,type):
-        #boolean variables
-        # 0 to save ,1 to like 
-        if type == 1:
-            try:
-                WebDriverWait(self.driver, 3).until(EC.presence_of_element_located((By.XPATH,  Tiktokbot.scrollVariablesInteraction['like_button'])))
-                Likebutton = self.driver.find_element("xpath", Tiktokbot.scrollVariablesInteraction["like_button"])
-                Likebutton.click()
-                
-                print("video liked")
-            except:
-                print("unable to like video")
-        elif type == 2:
-            try:
-                WebDriverWait(self.driver, 3).until(EC.presence_of_element_located((By.XPATH,  Tiktokbot.scrollVariablesInteraction['like_button'])))
-                Likebutton = self.driver.find_element("xpath", Tiktokbot.scrollVariablesInteraction["save_button"])
-                Likebutton.click()
-                print("video saved")
-            except:
-                print("unable to like video")
-        else:
-            print("not liked or saved")
-        time.sleep(2)
-        
         
     def autoscroll(self,times,mute):
     
