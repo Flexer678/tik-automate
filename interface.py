@@ -12,15 +12,14 @@ class Interface():
         self.root = tk.Tk()
         self.root.title("Tik automate")
         self.root.geometry("300x300")
-        #self.root.iconbitmap('logo.ico')
+        self.root.iconbitmap('logo.ico')
         self.root.resizable(width=False, height=False)
         
         self.directory_entry = tk.StringVar()
         Page(self.root)
        
         ttk.Button(self.root,text="Execute Program",padding=2,command=self.run).pack(pady=10, expand=False, fill=None)
-        #ttk.Button(self.root,text="End Program",padding=2,command=self.stop).pack(pady=10, expand=False, fill=None)
-        
+       
         self.root.mainloop()
     
     def run(self):
