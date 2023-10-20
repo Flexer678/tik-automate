@@ -205,13 +205,13 @@ class Tiktokbot(BaseCase):
                     
             
               
-                try:
-                    downbutton.click()
-                    
+                    try:
+                        downbutton.click()
                         
-                except:
-                    print("unable to click button as element is not interactable \n trying again in a few seconds")
-                print("scrolled for the "+ str(x) + "time")
+                            
+                    except:
+                        print("unable to click button as element is not interactable \n trying again in a few seconds")
+                    print("scrolled for the "+ str(x) + "time")
         else:
             print("ur not logged in")
             
