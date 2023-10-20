@@ -12,14 +12,15 @@ class Interface():
         self.root = tk.Tk()
         self.root.title("Tik automate")
         self.root.geometry("300x300")
-        self.root.iconbitmap('logo.ico')
+        #self.root.iconbitmap('logo.ico')
         self.root.resizable(width=False, height=False)
         
         self.directory_entry = tk.StringVar()
         Page(self.root)
        
         ttk.Button(self.root,text="Execute Program",padding=2,command=self.run).pack(pady=10, expand=False, fill=None)
-       
+        #ttk.Button(self.root,text="End Program",padding=2,command=self.stop).pack(pady=10, expand=False, fill=None)
+        
         self.root.mainloop()
     
     def run(self):
@@ -27,11 +28,13 @@ class Interface():
         #
         #
         
+        scrolls = scrollinput.get_scrollvalue
+        #print("the scorll value is ", scrollinput.get_scrollvalue)
         directory = directory_1.get_directory
         profile = directory_1.get_profile
         global bot
         bot = Tiktokbot(email="",password="", profile=profile, directory=directory)
-        bot.autoscroll(times=1, mute=True)
+        bot.autoscroll(times=scrolls, mute=True)
         
     
     def stop(self):
@@ -48,7 +51,8 @@ class Page(ttk.Frame):
         self.tab1 = ttk.Frame(root, width= 100, height=50)
         
         Accounts(self.tab1,)
-        ScrollInputBox(self.tab1)
+        global scrollinput
+        scrollinput = ScrollInputBox(self.tab1)
         
         self.tab1.pack( expand=True, fill="both")
         
@@ -131,7 +135,7 @@ class DirectoryEntry(ttk.Frame):
 
         
 
-class ScrollInputBox(ttk.Frame):
+class ScrollInputBox():
     def __init__(self, root,):
         
         
@@ -142,11 +146,12 @@ class ScrollInputBox(ttk.Frame):
         self.scrollvalue = self.scroll.get()
         self.scroll.grid(row=3, column=0,)
     
+
     @property
     def get_scrollvalue(self):
         return self.scrollvalue
     
-   
+
    
     def change_scrollvalue(self,var):
         self.scrollvalue = self.scroll.get()
@@ -158,6 +163,12 @@ Interface()
 
         
 
+
+
+
+
+
+#https://stackoverflow.com/questions/9355742/python-tkinter-button-entry-combination
 
 
 
