@@ -12,7 +12,7 @@ class Interface():
         self.root = tk.Tk()
         self.root.title("Tik automate")
         self.root.geometry("300x300")
-        #self.root.iconbitmap('logo.ico')
+        self.root.iconbitmap('logo.ico')
         self.root.resizable(width=False, height=False)
         
         self.directory_entry = tk.StringVar()
